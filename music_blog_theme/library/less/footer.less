@@ -1,0 +1,224 @@
+footer.footer	{
+  max-width: 940px;
+  display: block;
+  border-top: 1px solid #eee;
+  margin: 0 auto;
+  padding: 25px 0;
+  @media @1155 {
+/*    padding-left: 15px;
+    padding-right: 15px;*/
+  }
+  div#inner-footer {
+  	max-width: 1140px;
+  	display: block;
+  	margin: 0 auto;
+  	position: relative;
+  	overflow: visible;
+  	margin-bottom: 10px;
+    height: 115px;
+    @media @940 {
+      height: 155px;
+    }
+  	> div {
+  		display: inline-block;
+  		vertical-align: top;
+      width: 30%;
+      margin-left: 2%;
+      float: left;
+      position: relative;
+
+  		@media @768 {
+  			width: 35%;
+  		}
+      @media only screen and (max-width: 700px) {
+        width: 72%;
+      }
+      @media @600 {
+        width: 70%;
+        position: relative;
+      }
+  		@media @400 {
+  			width: 100%;
+  			margin-left: 0;
+  			display: block;
+        position: initial;
+  		}
+  		&:first-child {
+        width: 9%;
+        margin-left: 0;
+  			@media @768 {
+  				width: 16%;
+  			}
+        @media only screen and (max-width: 700px) {
+          width: 25%;
+          margin-bottom: 30px;
+
+        }
+        @media @600 {
+          width: 22%;
+        }
+  			@media @400 {
+          width: 100%;
+          margin-bottom: 25px;
+          text-align: center;
+  			}
+  		}
+  		&:nth-child(3) {
+        width: 36.2%;
+  			@media @768 {
+  				width: 45%;
+  			}
+        @media only screen and (max-width: 700px) {
+          width: 100%;
+          margin: 0;
+        }
+  			.textwidget {
+  				div:nth-child(2) {
+  					width: 100%;
+            @media @768 {
+              width: 100%;
+            }
+            @media @600 {
+              width: 100%;
+            }
+            @media @400 {
+              width: 100%;
+            }
+  				}
+  				form {
+  					input {
+  						width: ~'calc(100% - 110px)';
+  					}
+  					input[type="submit"] {
+  						width: 100px;
+  						font-size: 12px;
+  						vertical-align: top;
+  					}
+  				}
+  			}
+  		}
+      &:last-child {
+        width: 18.8%;
+        height: 100%;
+        @media @768 {
+          height: auto;
+          width: 42%;
+          text-align: center;
+          margin-top: 15px;
+        }
+       @media only screen and (max-width: 700px) {
+                 width: 100%;
+                 margin: 30px 0;
+               }
+        .textwidget {
+          position: absolute;
+          bottom: 22px;
+          right: 0;
+          @media @768 {
+            position: relative;
+            width: 100%;
+          }
+          @media @940 {
+            top: 0;
+          }
+        }
+      }
+  		h3 {
+  			text-transform: uppercase;
+  			font-size: 14px;
+  			margin-bottom: 10px;
+  			@media @400 {
+  				font-size: 14px;
+  			}
+  		}
+  		p {
+  			font-size: 14px;
+  		}
+  		.certification {
+        background-image: url('library/assets/images/iso_badge.png');
+        height: 105px;
+        width: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        @media @400 {
+          margin: 0 auto;
+          width: 105px;
+        }
+  		}
+  		.contact-info {
+  			display: inline-block;
+  			width: 49%;
+        padding-right: 10px;
+  			&:last-child {
+  				margin: 0;
+          padding-right: 10px;
+          padding: 0;
+  			}
+  			> p,
+  			> a {
+  				font-size: 12px;
+  				line-height: 22px;
+          @media only screen and (max-width: 1000px) {
+            font-size: 12px;
+          }
+  				@media @400 {
+  					font-size: 12px;
+  					line-height: 18px;
+  				}
+  			}
+  			a {
+  				display: inline-block;
+  			}
+  		}
+      p.newsletter {
+        margin-top: 0;
+        margin-bottom: 5px;
+        display: block;
+      }
+  		.social {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        border-radius: 50%;
+        text-indent: -9999px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        @media only screen and (max-width: 1050px) {
+          height: 36px;
+          width: 36px;
+        }
+        @media @940 {
+          height: 34px;
+          width: 34px;
+        }
+  			&:last-child {
+  				margin-right: 0;
+  			}
+  			&.youtube {
+  				background-color: #00578e;
+  				background-image: url('library/assets/images/youtube.png');
+  				background-size: 24px;
+  			}
+  			&.linkedin {
+  				background-color: #007eb0;
+  				background-image: url('library/assets/images/linkedin.png');
+  				background-size: 21px;
+  			}
+  			&.twitter {
+  				background-color: #38aae0;
+  				background-image: url('library/assets/images/twitter.png');
+  				background-size: 18px;
+  			}
+  			&.facebook {
+  				background-color: #00578e;
+  				background-image: url('library/assets/images/facebook.png');
+  				background-size: 10px;
+  			}
+  		}
+  	}
+  }
+  .copyright {
+  	font-size: 12px;
+  	text-align: center;
+  }
+}
