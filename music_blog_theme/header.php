@@ -20,7 +20,16 @@
        <a href="<?php echo home_url(); ?>" class="logo" rel="nofollow">
         <img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png" alt="rrrepeat" >
        </a>
+       <nav class="main-nav">
+         <ul>
+          <li><a href="">All</a></li>
+          <li><a href="">New Music</a></li>
+          <li><a href="">Throwback</a></li>
+          <li><a href="">Reviews</a></li>
+         </ul>
+       </nav>
       </div>
+      <div class="blur"></div>
     </header>
 
     <div id="container">
