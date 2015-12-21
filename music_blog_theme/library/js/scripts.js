@@ -3241,10 +3241,7 @@ $(document).ready(function() {
     $(".mobile-menu-button").click(function() {
         $("nav.main-nav ul").toggleClass("nav-toggle");
     });
-    setTimeout(function() {
-        alert("hello");
-        respondify();
-    }, 1e3);
+    respondify();
 });
 
 $(window).resize(function() {

@@ -1,76 +1,72 @@
 <?php get_header(); ?>
 
-			<div id="content">
+<div id="inner-content" class="wrap cf">
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-				<div id="inner-content" class="wrap cf">
-
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
-
-								<header class="article-header">
-
-									<h1 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-									<p class="byline entry-meta vcard">
-                                                                        <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
-                       								/* the time the post was published */
-                       								'<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-                       								/* the author of the post */
-                       								'<span class="by">'.__( 'by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-                    							); ?>
-									</p>
-
-								</header>
-
-								<section class="entry-content cf">
-									<?php the_content(); ?>
-								</section>
-
-								<footer class="article-footer cf">
-									<p class="footer-comment-count">
-										<?php comments_number( __( '<span>No</span> Comments', 'bonestheme' ), __( '<span>One</span> Comment', 'bonestheme' ), __( '<span>%</span> Comments', 'bonestheme' ) );?>
-									</p>
-
-
-                 	<?php printf( '<p class="footer-category">' . __('filed under', 'bonestheme' ) . ': %1$s</p>' , get_the_category_list(', ') ); ?>
-
-                  <?php the_tags( '<p class="footer-tags tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
-
-
-								</footer>
-
-							</article>
-
-							<?php endwhile; ?>
-
-									<?php bones_page_navi(); ?>
-
-							<?php else : ?>
-
-									<article id="post-not-found" class="hentry cf">
-											<header class="article-header">
-												<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-										</header>
-											<section class="entry-content">
-												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the index.php template.', 'bonestheme' ); ?></p>
-										</footer>
-									</article>
-
-							<?php endif; ?>
-
-
-						</main>
-
-					<?php get_sidebar(); ?>
-
+	<article class="home-article" role="article">
+		<?php 
+			$album_art= get_field('album_art');
+		?>
+		<header class="article-header with-background" style="background-image: url('<?php echo $album_art ?>')">
+			<div class="max-width-container">
+				<span class="category-name">
+					<?php
+						$cats = get_the_category();
+						$cat_name = $cats[0]->name;
+						echo $cat_name;
+					?>
+				</span>
+				<h1>
+					<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+						<?php the_title(); ?>
+					</a>
+				</h1>
+				<div class="music-embed">
+					<?php
+						echo get_field('embed_iframe');
+					?>
 				</div>
-
 			</div>
+		</header>
+
+		<section class="article-body home-page">
+			<div class="author-item">
+				<?php 
+					$img = get_field('image', 'user_1');
+					$handle = get_field('twitter_handle', 'user_1');
+				?>
+				<span class="author-img"><img src="<?php echo $img['sizes']['thumbnail'] ?>" alt=""></span>
+				<div class="author-info">
+					<span class="author-name"><?php the_author(); ?></span>
+					<span class="author-twitter"><a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">@<?php echo $handle; ?></a></span>
+				</div>
+			</div>
+			<?php the_excerpt(); ?>
+		</section>
+
+		<div class="continue">
+			<a href="<?php the_permalink() ?>">Continue Reading</a>
+		</div>
+
+	</article>
+
+	<?php endwhile; ?>
+
+	<?php else : ?>
+			<article id="post-not-found" class="hentry cf">
+					<header class="article-header">
+						<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+				</header>
+					<section class="entry-content">
+						<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+				</section>
+				<footer class="article-footer">
+						<p><?php _e( 'This is the error message in the index.php template.', 'bonestheme' ); ?></p>
+				</footer>
+			</article>
+
+	<?php endif; ?>
+</div>
 
 
 <?php get_footer(); ?>

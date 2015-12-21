@@ -137,14 +137,15 @@ add_filter('the_content_feed', 'wpfme_feed_post_thumbnail');
 
 
 //create a permalink after the excerpt
-function wpfme_replace_excerpt($content) {
-  return str_replace('[...]',
-    '<a class="readmore" href="'. get_permalink() .'">Continue Reading</a>',
-    $content
-  );
+function new_excerpt_more( $more ) {
+  return '...';
 }
-add_filter('the_excerpt', 'wpfme_replace_excerpt');
+add_filter('excerpt_more', 'new_excerpt_more');
 
+function custom_excerpt_length( $length ) {
+  return 45;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 // Call the google CDN version of jQuery for the frontend
 // Make sure you use this with wp_enqueue_script('jquery'); in your header
