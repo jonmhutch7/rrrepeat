@@ -3241,6 +3241,16 @@ $(document).ready(function() {
     $(".mobile-menu-button").click(function() {
         $("nav.main-nav ul").toggleClass("nav-toggle");
     });
+    if ($("body").hasClass("home")) {
+        $(".cat-item-all").addClass("current-menu-item");
+    }
+    if ($("body").hasClass("home") || $("body").hasClass("category") || $("body").hasClass("single") && window.innerWidth < 769) {
+        $('iframe[src*="embed.spotify.com"]').height("80px");
+    }
+    if (window.innerWidth < 600) {
+        var width = $(".nav-list-container ul").width();
+        $(".nav-list-container ul").css("min-width", width + 5);
+    }
     respondify();
 });
 

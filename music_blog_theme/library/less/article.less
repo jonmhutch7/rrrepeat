@@ -4,13 +4,6 @@ article.post {
   }
 }
 section.article-body {
-  p {
-    .helvetica(300);
-    font-size: 14px;
-    letter-spacing: 0.25px;
-    line-height: 22px;
-    display: block;
-  }
   .author-item {
     float: left;
   }
@@ -23,7 +16,7 @@ section.article-body {
 
 .continue {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 14px;
     .quantico(300);
     a {
@@ -31,11 +24,49 @@ section.article-body {
     }
 }
 
+.scrolling-container {
+    overflow-y: scroll;
+    height: 100%;
+    max-width: 600px;
+    float: right;
+    padding-left: 30px;
+    padding-right: 10px;
+    width: 70%;
+    @media @768 {
+      width: 100%;
+      display: block;
+      overflow-y: visible;
+      max-width: 700px;
+      padding: 0;
+    }
+}
+
+.album-art {
+  width: 30%;
+  float: left;
+  @media @768 {
+    width: 100%;
+    display: block;
+    float: none;
+    max-width: 700px;
+  }
+  img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  header.article-header {
+    h1,
+    .category-name {
+      text-align: left;
+    }
+  }
+}
+
 .contributors {
   position: relative;
   .from-contribs {
-    margin: 25px 0 10px;
-    font-size: 16px;
+    margin: 35px 0 15px;
+    font-size: 14px;
     display: block;
     font-style: italic;
     color: #777;
@@ -46,40 +77,39 @@ section.article-body {
       position: absolute;
       height: 1px;
       background: #dedede;
-      left: 145px;
-      width: ~'calc(100% - 155px)';
-      top: 11px;
+      left: 95px;
+      width: ~'calc(100% - 100px)';
+      top: 9px;
     }
   }
   > div {
       display: inline-block;
       width: 50%;
       float: left;
+      @media @500 {
+        width: 100%;
+        display: block;
+        float: none;
+      }
       .author-item {
-        font-size: 11px;
-        float: right;
-        margin: 0;
-        margin-top: 10px;
-        span.author-img {
-          width: 32px;
-          height: 32px;
-        }
-        span.author-name {
-          font-size: 13px;
+        text-align: right;
+        .author-name {
+          margin-top: 5px;
+          font-size: 12px;
         }
       }
       &.contrib-one {
         padding-right: 20px;
+        @media @500 {
+          padding: 0;
+          margin-bottom: 20px;
+        }
       }
       &.contrib-two {
         padding-left: 20px;
-      }
-      p {
-        .helvetica(300);
-        font-size: 14px;
-        letter-spacing: 0.25px;
-        line-height: 22px;
-        display: block;
+        @media @500 {
+          padding: 0;
+        }
       }
   }
 }

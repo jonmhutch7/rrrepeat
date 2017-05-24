@@ -54,7 +54,7 @@
     if (!is_admin()) {
       wp_register_style( 'main-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
       wp_enqueue_style( 'main-stylesheet' );
-      wp_register_script( 'main-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array(), '', true );
+      wp_register_script( 'main-js', get_stylesheet_directory_uri() . '/library/js/scripts.js');
       wp_enqueue_script( 'main-js' );
     }
   }

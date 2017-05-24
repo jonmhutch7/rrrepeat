@@ -17,48 +17,49 @@
 				<h1>
 					<?php the_title(); ?>
 				</h1>
+				<?php
+					$author_id = $post->post_author;
+					$handle = get_field('twitter_handle', 'user_' . $author_id);
+				?>
+				<div class="author-name">
+					<a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">
+						<b>by</b> <?php echo get_the_author_meta( 'first_name' ); ?> <?php echo get_the_author_meta( 'last_name' ); ?>
+					</a>
+				</div>
 			</header>
-			<img src="<?php the_field('album_art') ?>" alt="<?php the_title(); ?>">
+			<div class="music-embed"><?php
+					$platform = get_field('embed_from');
+					if ($platform == 'Soundcloud') {
+						echo get_field('article_embed');
+					} else {
+						echo get_field('embed_code');
+					}
+				?></div>
 		</div>
 		<div class="scrolling-container">
-				<div class="music-embed">
-					<?php
-						echo get_field('embed_iframe');
-					?>
-				</div>
 				<section class="article-body">
-					<div class="author-item">
-						<?php 
-							$img = get_field('image', 'user_1');
-							$handle = get_field('twitter_handle', 'user_1');
-						?>
-						<span class="author-img"><img src="<?php echo $img['sizes']['thumbnail'] ?>" alt=""></span>
-						<div class="author-info">
-							<span class="author-name"><?php the_author(); ?></span>
-							<span class="author-twitter"><a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">@<?php echo $handle; ?></a></span>
-						</div>
-					</div>
 					<?php the_content(); ?>
 				</section>
 			<?php if (in_category('3')) : ?>
 				<section class="contributors">
-					<span class="from-contribs">Our Contributors</span>
+					<span class="from-contribs">Contributors</span>
 					<div class="contrib-one">
 						<p>
 							<?php	the_field('contributor_one_text') ?>
 						</p>
 						<div class="author-item contributor">
 							<?php
-								$user = get_field('contributor_one');
+								$user = get_field('contributor_two');
 								$userId = $user['ID'];
-								$userName = $user['display_name'];
-								$img = get_field('image', 'user_'.$userId);
+								$user_info = get_userdata($userId);
+								$firstName = $user_info->first_name;
+								$lastName = $user_info->last_name;
 								$handle = get_field('twitter_handle', 'user_'.$userId);
 							?>
-							<span class="author-img"><img src="<?php echo $img['sizes']['thumbnail'] ?>" alt=""></span>
-							<div class="author-info">
-								<span class="author-name"><?php	echo $userName; ?></span>
-								<span class="author-twitter"><a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">@<?php echo $handle; ?></a></span>
+							<div class="author-name">
+								<a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">
+									<b>-</b> <?php	echo $firstName; ?> <?php	echo $lastName; ?>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -70,14 +71,15 @@
 							<?php
 								$user = get_field('contributor_two');
 								$userId = $user['ID'];
-								$userName = $user['display_name'];
-								$img = get_field('image', 'user_'.$userId);
+								$user_info = get_userdata($userId);
+								$firstName = $user_info->first_name;
+								$lastName = $user_info->last_name;
 								$handle = get_field('twitter_handle', 'user_'.$userId);
 							?>
-							<span class="author-img"><img src="<?php echo $img['sizes']['thumbnail'] ?>" alt=""></span>
-							<div class="author-info">
-								<span class="author-name"><?php	echo $userName; ?></span>
-								<span class="author-twitter"><a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">@<?php echo $handle; ?></a></span>
+							<div class="author-name">
+								<a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">
+									<b>-</b> <?php	echo $firstName; ?> <?php	echo $lastName; ?>
+								</a>
 							</div>
 						</div>
 					</div>

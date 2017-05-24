@@ -2,12 +2,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php wp_title(''); ?></title>
+    <title><?php if (function_exists('is_tag') && is_tag()) { echo 'Tag Archive for &quot;'.$tag.'&quot; - '; } elseif (is_archive()) { wp_title(''); echo ' Archive - '; } elseif (is_search()) { echo 'Search for &quot;'.wp_specialchars($s).'&quot; - '; } elseif (!(is_404()) && (is_single()) || (is_page())) { wp_title(''); echo ' - '; } elseif (is_404()) { echo 'Not Found - '; } bloginfo('name'); ?>
+    </title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
-    <link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
     <!--[if IE]>
       <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
     <![endif]-->
@@ -20,20 +21,37 @@
       <div id="inner-header">
       
        <nav class="main-nav">
-         <ul>
-          <li><a href="">All</a></li>
-          <li><a href="">New Music</a></li>
-          <li>
-            <a href="<?php echo home_url(); ?>" class="logo" rel="nofollow">
-             <img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png" alt="rrrepeat" >
-            </a>
-          </li>
-          <li><a href="">Throwback</a></li>
-          <li><a href="">Reviews</a></li>
-         </ul>
+          <a href="<?php echo home_url(); ?>" class="logo" rel="nofollow">
+            <img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png" alt="rrrepeat" >
+          </a>
+          <div class="nav-list-container">
+            <ul>
+              <?php wp_list_categories( array(
+                  'orderby' => 'name',
+                  'show_option_all' => 'All',
+                  'title_li' => __( '' ),
+              ) ); ?>
+              <span class="float-desktop">
+                <li class="about">
+                  <a href="/about">
+                    About
+                  </a>
+                </li>
+                <li class="social-icon">
+                  <a href="https://www.facebook.com/rrrepeat" target="_blank">
+                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/facebook.png" alt="rrrepeat" />
+                  </a>
+                </li>
+                <li class="social-icon">
+                  <a href="https://www.twitter.com/rrrepeatblog" target="_blank"> 
+                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/twitter.png" alt="rrrepeat" />
+                  </a>
+                </li>
+              </span>
+            </ul>
+          </div>
        </nav>
       </div>
-      <div class="blur"></div>
     </header>
 
     <section id="content">
