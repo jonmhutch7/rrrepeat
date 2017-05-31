@@ -4,7 +4,15 @@
 	?>
 	<header class="article-header with-background" style="background-image: url('<?php echo $album_art ?>')">
 		<div class="max-width-container">
-			<span class="date"><?php the_date(); ?></span>
+			<span class="date">
+				<?php
+					$cats = get_the_category();
+					$cat_name = $cats[0]->name;
+					echo $cat_name;
+				?>
+				- 
+				<?php the_date(); ?>
+			</span>
 			
 			<h1>
 				<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">

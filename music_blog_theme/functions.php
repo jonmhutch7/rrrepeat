@@ -7,7 +7,7 @@
   add_filter( 'login_headerurl', 'login_url' );
 
   function login_title() { return get_option( 'blogname' ); }
-  add_filter( 'login_headertitle', 'ogin_title' );
+  add_filter( 'login_headertitle', 'login_title' );
 
   function head_cleanup() {
     remove_action( 'wp_head', 'rsd_link' );
