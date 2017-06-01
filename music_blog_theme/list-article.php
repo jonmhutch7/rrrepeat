@@ -20,14 +20,18 @@
 				</a>
 			</h1>
 
-			<div class="music-embed"><?php
+			<div class="music-embed">
+				<?php
 					$platform = get_field('embed_from');
+					
 					if ($platform == 'Soundcloud') {
 						echo get_field('home_page_embed');
 					} else {
-						echo get_field('embed_code');
+						echo get_field('spotify_embed');
 					}
-				?></div>
+
+				?>
+			</div>
 		</div>
 	</header>
 

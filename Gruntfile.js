@@ -42,7 +42,6 @@ module.exports = function(grunt) {
         },
         files: {
           '<%= paths.js %>scripts.js': [
-           '<%= paths.js %>modernizr-2.6.2.min.js',
            '<%= paths.js %>jquery.min.js',
            '<%= paths.js %>main.js'
           ]
@@ -54,8 +53,8 @@ module.exports = function(grunt) {
           preserveComments: false
         },
         files: {
-           '<%= paths.base %>scripts.js': [
-             '<%= paths.js %>modernizr-2.6.2.min.js',
+           '<%= paths.js %>scripts.js': [
+
              '<%= paths.js %>jquery.min.js',
              '<%= paths.js %>main.js'
           ]

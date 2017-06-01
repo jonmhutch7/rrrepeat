@@ -14,24 +14,34 @@ section.article-body {
   }
 }
 
+.single-post {
+  section#content {
+    max-height: ~'calc(100vh - 200px)';
+    height: 100%;
+    @media @768 {
+      max-height: 100%;
+    }
+  }
+  #inner-content,
+  article {
+    height: 100%;
+  }
+}
+
 .continue {
     text-align: center;
     margin-top: 10px;
     font-size: 14px;
     .quantico(300);
-    a {
-
-    }
 }
 
 .scrolling-container {
     overflow-y: scroll;
+    padding-left: 20px;
+    width: ~'calc(100% - 310px)';
+    display: inline-block;
+    vertical-align: top;
     height: 100%;
-    max-width: 600px;
-    float: right;
-    padding-left: 30px;
-    padding-right: 10px;
-    width: 70%;
     @media @768 {
       width: 100%;
       display: block;

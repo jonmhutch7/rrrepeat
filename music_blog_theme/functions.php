@@ -86,7 +86,7 @@
 
   function launch_custom_actions() {
     add_action( 'init', 'head_cleanup' );
-    add_filter( 'wp_title', 'rw_title', 10, 3 );
+    // add_filter( 'wp_title', 'rw_title', 10, 3 );
     add_filter( 'the_generator', 'rss_version' );
     add_filter( 'gallery_style', 'gallery_style' );
     add_action( 'wp_enqueue_scripts', 'load_scripts_and_styles', 999 );

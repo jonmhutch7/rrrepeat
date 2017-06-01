@@ -30,27 +30,32 @@
 			<div class="music-embed"><?php
 					$platform = get_field('embed_from');
 					if ($platform == 'Soundcloud') {
-						echo get_field('article_embed');
+						echo get_field('soundcloud_article_embed');
 					} else {
-						echo get_field('embed_code');
+						echo get_field('spotify_embed');
 					}
 				?></div>
 		</div>
 		<div class="scrolling-container">
-				<section class="article-body">
-					<?php the_content(); ?>
-				</section>
-			<?php if (in_category('3')) : ?>
+			<section class="article-body">
+				<?php the_content(); ?>
+			</section>
+
+			<?php
+				$contrib_one = get_field('contributor_one');
+				$contrib_two = get_field('contributor_two');
+			?>
+
+			<?php if (!empty($contrib_one) or !empty($contrib_two)) : ?>
 				<section class="contributors">
 					<span class="from-contribs">Contributors</span>
 					<div class="contrib-one">
 						<p>
-							<?php	the_field('contributor_one_text') ?>
+							<?php the_field('contributor_one_text') ?>
 						</p>
 						<div class="author-item contributor">
 							<?php
-								$user = get_field('contributor_two');
-								$userId = $user['ID'];
+								$userId = $contrib_one['ID'];
 								$user_info = get_userdata($userId);
 								$firstName = $user_info->first_name;
 								$lastName = $user_info->last_name;
@@ -65,12 +70,11 @@
 					</div>
 					<div class="contrib-two">
 						<p>
-							<?php	the_field('contributor_two_text') ?>
+							<?php the_field('contributor_two_text') ?>
 						</p>
 						<div class="author-item contributor">
 							<?php
-								$user = get_field('contributor_two');
-								$userId = $user['ID'];
+								$userId = $contrib_two['ID'];
 								$user_info = get_userdata($userId);
 								$firstName = $user_info->first_name;
 								$lastName = $user_info->last_name;
