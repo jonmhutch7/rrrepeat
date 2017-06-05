@@ -1,6 +1,6 @@
 article.post {
   .music-embed {
-      margin:0 0 25px;
+      margin:0 0 10px;
   }
 }
 section.article-body {
@@ -49,6 +49,30 @@ section.article-body {
       max-width: 700px;
       padding: 0;
     }
+}
+
+.music-links {
+  margin-bottom: 20px;
+  h2 {
+    font-weight: 600;
+  }
+  a {
+    font-size: 14px
+  }
+  h2, a {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  @media @768 {
+    ul li {
+      display: inline-block;
+      margin-right: 5px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 .album-art {

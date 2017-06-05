@@ -27,14 +27,54 @@
 					</a>
 				</div>
 			</header>
-			<div class="music-embed"><?php
+			<div class="music-embed">
+				<?php
 					$platform = get_field('embed_from');
 					if ($platform == 'Soundcloud') {
 						echo get_field('soundcloud_article_embed');
 					} else {
 						echo get_field('spotify_embed');
 					}
-				?></div>
+				?>		
+			</div>
+			<div class="music-links">
+				<?php
+					$apple = get_field('apple_music_link');
+					$spotify = get_field('spotify_link');
+					$youtube = get_field('youtube_link');
+					$google = get_field('google_play_link');
+					$soundcloud = get_field('soundcloud_link');
+				?>
+
+				<ul>
+					<li><h2>Find it on:</h2></li>
+					<?php if (!empty($apple)) : ?>
+						<li>
+							<a target="_blank" href="<?php echo $apple; ?>">Apple Music</a>
+						</li>
+					<?php endif; ?>
+					<?php if (!empty($spotify)) : ?>
+						<li>
+							<a target="_blank" href="<?php echo $spotify; ?>">Spotify</a>
+						</li>
+					<?php endif; ?>
+					<?php if (!empty($youtube)) : ?>
+						<li>
+							<a target="_blank" href="<?php echo $youtube; ?>">Youtube</a>
+						</li>
+					<?php endif; ?>
+					<?php if (!empty($google)) : ?>
+						<li>
+							<a target="_blank" href="<?php echo $google; ?>">Google Play</a>
+						</li>
+					<?php endif; ?>
+					<?php if (!empty($soundcloud)) : ?>
+						<li>
+							<a target="_blank" href="<?php echo $soundcloud; ?>">Soundcloud</a>
+						</li>
+					<?php endif; ?>
+				</ul>
+			</div>
 		</div>
 		<div class="scrolling-container">
 			<section class="article-body">
