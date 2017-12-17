@@ -37,50 +37,12 @@
 					}
 				?>		
 			</div>
-			<div class="music-links">
-				<?php
-					$apple = get_field('apple_music_link');
-					$spotify = get_field('spotify_link');
-					$youtube = get_field('youtube_link');
-					$google = get_field('google_play_link');
-					$soundcloud = get_field('soundcloud_link');
-					$official = get_field('official_link');
-				?>
-
-				<ul>
-					<li><h2>Find it on:</h2></li>
-					<?php if (!empty($spotify)) : ?>
-						<li>
-							<a target="_blank" href="<?php echo $spotify; ?>">Spotify</a>
-						</li>
-					<?php endif; ?>
-					<?php if (!empty($soundcloud)) : ?>
-						<li>
-							<a target="_blank" href="<?php echo $soundcloud; ?>">Soundcloud</a>
-						</li>
-					<?php endif; ?>
-					<?php if (!empty($apple)) : ?>
-						<li>
-							<a target="_blank" href="<?php echo $apple; ?>">Apple Music</a>
-						</li>
-					<?php endif; ?>
-					<?php if (!empty($youtube)) : ?>
-						<li>
-							<a target="_blank" href="<?php echo $youtube; ?>">Youtube</a>
-						</li>
-					<?php endif; ?>
-					<?php if (!empty($google)) : ?>
-						<li>
-							<a target="_blank" href="<?php echo $google; ?>">Google Play</a>
-						</li>
-					<?php endif; ?>
-					<?php if (!empty($official)) : ?>
-						<li>
-							<a target="_blank" href="<?php echo $official; ?>">Official Store</a>
-						</li>
-					<?php endif; ?>
-				</ul>
-			</div>
+			<?php $spotify = get_field('spotify_link'); ?>
+			<?php if (!empty($spotify)) : ?>
+				<div class="music-links">
+					<iframe height="100" src="https://song.link/embed?url=<?php echo $spotify; ?>" frameborder="0" allowtransparency allowfullscreen></iframe>
+				</div>
+			<?php endif; ?>
 		</div>
 		<div class="scrolling-container">
 			<section class="article-body">

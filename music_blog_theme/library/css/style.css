@@ -709,7 +709,7 @@ textarea {
 body {
   font-size: 1em;
   line-height: 1.4;
-  background: url(/wp-content/themes/music_blog_theme/library/images/brillant.png);
+  background-color: #fff;
   height: 100%;
 }
 body.single section#content {
@@ -1372,6 +1372,12 @@ blockquote span {
   opacity: 0.6;
   margin-top: 7px;
   display: block;
+}
+.music-links iframe {
+  width: 100%;
+}
+.music-links div[data-nemo=share-tab] {
+  display: none;
 }
 .music-links h2 {
   display: block;
