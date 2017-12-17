@@ -4,6 +4,24 @@ header.article-header {
   font-weight: 100;
   position: relative;
   margin-bottom: 20px;
+  h1 {
+    font-size: 30px;
+    line-height: 32px;
+    font-family: 'Poppins',sans-serif;
+    letter-spacing: 2px;
+    font-weight: 300;
+    text-transform: uppercase;
+    @media @400 {
+        font-size: 24px;
+    }
+    a,b {
+      line-height: 30px;
+    }
+    a {
+      display: block;
+      text-align: center;
+    }
+  }
   &.with-background {
     padding: 40px 50px;
     background-repeat: no-repeat;
@@ -34,6 +52,10 @@ header.article-header {
           text-shadow: 3px 3px #111;
         }
       }
+      a {
+        display: block;
+        text-align: center;
+      }
     }
     .music-embed {
       box-shadow: 0px 0px 10px 0px #555;
@@ -53,20 +75,6 @@ header.article-header {
     display: block;
     position: relative;
     width: 100%;
-  }
-  h1 {
-      font-size: 26px;
-      text-transform: uppercase;
-      line-height: 30px;
-      text-align: center;
-      color: #0071BC;
-      a, b {
-          line-height: 30px;
-          line-height: 30px;
-      }
-      @media @400 {
-          font-size: 22px;
-      }
   }
   .info {
       text-align: center;

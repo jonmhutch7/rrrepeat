@@ -44,18 +44,24 @@
 					$youtube = get_field('youtube_link');
 					$google = get_field('google_play_link');
 					$soundcloud = get_field('soundcloud_link');
+					$official = get_field('official_link');
 				?>
 
 				<ul>
 					<li><h2>Find it on:</h2></li>
-					<?php if (!empty($apple)) : ?>
-						<li>
-							<a target="_blank" href="<?php echo $apple; ?>">Apple Music</a>
-						</li>
-					<?php endif; ?>
 					<?php if (!empty($spotify)) : ?>
 						<li>
 							<a target="_blank" href="<?php echo $spotify; ?>">Spotify</a>
+						</li>
+					<?php endif; ?>
+					<?php if (!empty($soundcloud)) : ?>
+						<li>
+							<a target="_blank" href="<?php echo $soundcloud; ?>">Soundcloud</a>
+						</li>
+					<?php endif; ?>
+					<?php if (!empty($apple)) : ?>
+						<li>
+							<a target="_blank" href="<?php echo $apple; ?>">Apple Music</a>
 						</li>
 					<?php endif; ?>
 					<?php if (!empty($youtube)) : ?>
@@ -68,9 +74,9 @@
 							<a target="_blank" href="<?php echo $google; ?>">Google Play</a>
 						</li>
 					<?php endif; ?>
-					<?php if (!empty($soundcloud)) : ?>
+					<?php if (!empty($official)) : ?>
 						<li>
-							<a target="_blank" href="<?php echo $soundcloud; ?>">Soundcloud</a>
+							<a target="_blank" href="<?php echo $official; ?>">Official Store</a>
 						</li>
 					<?php endif; ?>
 				</ul>
@@ -89,9 +95,14 @@
 			<?php if (!empty($contrib_one) or !empty($contrib_two)) : ?>
 				<section class="contributors">
 					<span class="from-contribs">Contributors</span>
+
+					<?php 
+						$contribtext = get_field('contributor_one_text');
+						if (!empty($contribtext)) 
+					: ?>
 					<div class="contrib-one">
 						<p>
-							<?php the_field('contributor_one_text') ?>
+								<b>"</b><?php echo $contribtext ?><b>"</b>
 						</p>
 						<div class="author-item contributor">
 							<?php
@@ -103,14 +114,19 @@
 							?>
 							<div class="author-name">
 								<a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">
-									<b>-</b> <?php	echo $firstName; ?> <?php	echo $lastName; ?>
+										 <?php	echo $firstName; ?> <?php echo $lastName; ?>
 								</a>
 							</div>
 						</div>
 					</div>
+					<?php endif; ?>
+					<?php 
+						$contribtext = get_field('contributor_two_text');
+						if (!empty($contribtext)) 
+					: ?>
 					<div class="contrib-two">
 						<p>
-							<?php the_field('contributor_two_text') ?>
+								<b>"</b><?php echo $contribtext ?><b>"</b>
 						</p>
 						<div class="author-item contributor">
 							<?php
@@ -122,13 +138,64 @@
 							?>
 							<div class="author-name">
 								<a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">
-									<b>-</b> <?php	echo $firstName; ?> <?php	echo $lastName; ?>
+										 <?php	echo $firstName; ?> <?php echo $lastName; ?>
 								</a>
 							</div>
 						</div>
 					</div>
+					<?php endif; ?>
 				</section>
 			<?php endif; ?>
+
+			<?php 
+				$orig_post = $post;
+				global $post;
+				$tags = wp_get_post_tags($post->ID);
+				if ($tags) {
+					$tag_ids = array();
+					foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
+						$args=array(
+							'tag__in' => $tag_ids,
+							'post__not_in' => array($post->ID),
+							'posts_per_page'=>4, // Number of related posts that will be shown.
+							'caller_get_posts'=>1
+						);
+						$my_query = new wp_query( $args );
+						if( $my_query->have_posts() ) {
+							echo '<div class="related-posts"><ul><h2>More music like this...</h2>';
+							while( $my_query->have_posts() ) {
+								$my_query->the_post(); ?>
+									<li>
+										<div class="related-thumb">
+											<a href="<? the_permalink()?>" title="<?php the_title(); ?>">
+												<?php 
+													$album_art= get_field('album_art');
+													$album_art_url = $album_art['sizes']['thumbnail'];
+												?>
+												<img src="<?php echo $album_art_url ?>" />
+											</a>
+										</div>
+										<div class="related-content">
+											<a href="<? the_permalink()?>" title="<?php the_title(); ?>">
+												<?php
+													$thetitle = $post->post_title; /* or you can use get_the_title() */
+													$getlength = strlen($thetitle);
+													$thelength = 27;
+													echo substr($thetitle, 0, $thelength);
+													if ($getlength > $thelength) echo "...";
+												?>	
+											</a>
+										</div>
+									</li>
+							<? }
+							echo '</ul></div>';
+						}
+					}
+				
+				$post = $orig_post;
+				wp_reset_query(); 
+			?>
+
 		</div>
 	</article>
 	<?php endwhile; ?>

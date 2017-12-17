@@ -17,7 +17,7 @@ body {
     background: url(/wp-content/themes/music_blog_theme/library/images/brillant.png);
     height: 100%;
     &.single section#content {
-        max-width: 940px;
+        max-width: 1000px;
     }
     
 }
@@ -85,6 +85,12 @@ a {
         color: darken(@link, 5%);
     }
 }
+
+em {
+    font-style: oblique;
+    font-weight: 500;
+}
+
 #container {
     margin-top: 200px;
 }
@@ -116,11 +122,15 @@ a {
     width: 100%;
 }
 
+i {
+    font-style: italic;
+}
+
 p {
   .helvetica(300);
-  font-size: 14px;
-  letter-spacing: 0.25px;
-  line-height: 22px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  line-height: 28px;
   display: block;
 }
 
@@ -132,7 +142,6 @@ section#content {
     @media only screen and (max-width: 985px) {
       padding-left: 15px;
       padding-right: 15px;
-      margin-top: 10px;
     }
     @media @640 {
         margin: 15px auto;

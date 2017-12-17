@@ -1,8 +1,9 @@
 <article class="home-article" role="article">
 	<?php 
 		$album_art= get_field('album_art');
+		$album_art_url = $album_art['sizes']['medium_large'];
 	?>
-	<header class="article-header with-background" style="background-image: url('<?php echo $album_art ?>')">
+	<header class="article-header with-background" style="background-image: url('<?php echo $album_art_url ?>')">
 		<div class="max-width-container">
 			<span class="date">
 				<?php
@@ -11,7 +12,7 @@
 					echo $cat_name;
 				?>
 				- 
-				<?php the_date(); ?>
+				<?php echo get_the_date('F j, Y'); ?>
 			</span>
 			
 			<h1>

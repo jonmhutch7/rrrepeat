@@ -1,9 +1,8 @@
 <?php get_header(); ?>
 
 <div id="inner-content" class="wrap cf">
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		<?php get_template_part( 'list', 'article' ); ?>
-	<?php endwhile; ?>
+	<?php if (have_posts()) : ?>
+		<?php echo do_shortcode('[ajax_load_more container_type="div" post_type="post" transition="fade" progress_bar="true" progress_bar_color="0071bc" images_loaded="true" scroll_distance="50"]'); ?>
 	<?php else : ?>
 		<article id="post-not-found">
 			<header class="article-header">

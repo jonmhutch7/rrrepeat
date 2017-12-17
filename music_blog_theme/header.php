@@ -6,27 +6,32 @@
     </title>
     
     <?php 
+
       if (is_home()) { 
         $type = "blog";
         $description = "Blog for music listeners by music listeners. So good it's on repeat. If you'd like to contribute, connect with us on Facebook or Twitter.";
         $image = get_template_directory_uri(). "/library/images/poster.jpg";
       } else if (in_category('new-music')) {
-        $image = get_field('album_art');
+        $album_art= get_field('album_art');
+        $image = $album_art['sizes']['medium_large'];
         $title = get_the_title();
         $type = "article";
         $description = strip_tags($title). ". New Music from rrrepeat. So good it's on repeat. If you'd like to contribute, connect with us on Facebook or Twitter.";
       } else if (in_category('weekly')) {
-        $image = get_field('album_art');
+        $album_art= get_field('album_art');
+        $image = $album_art['sizes']['medium_large'];
         $date = the_date('F S Y');
         $type = "article";
         $description = "Weekly Roundup from rrrepeat, ".$date.". So good it's on repeat. If you'd like to contribute, connect with us on Facebook or Twitter.";
       } else if (in_category('reviews')) {
-        $image = get_field('album_art');
+        $album_art= get_field('album_art');
+        $image = $album_art['sizes']['medium_large'];
         $title = get_the_title();
         $type = "article";
         $description = strip_tags($title). ". Album reviews from rrrepeat. So good it's on repeat. If you'd like to contribute, connect with us on Facebook or Twitter. ";
       } else if (in_category('throwback')) {
-        $image = get_field('album_art');
+        $album_art= get_field('album_art');
+        $image = $album_art['sizes']['medium_large'];
         $title = get_the_title();
         $type = "article";
         $description = strip_tags($title). ". Throwbacks to the music that started it all from rrrepeat. So good it's on repeat. If you'd like to contribute, connect with us on Facebook or Twitter";
@@ -79,13 +84,18 @@
                   </a>
                 </li>
                 <li class="social-icon">
+                  <a href="https://open.spotify.com/user/rrrepeat" target="_blank">
+                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/spotify.png" alt="Rrrepeat Spotify" />
+                  </a>
+                </li>
+                <li class="social-icon">
                   <a href="https://www.facebook.com/rrrepeat" target="_blank">
-                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/facebook.png" alt="rrrepeat" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/facebook.png" alt="Rrrepeat Facebook" />
                   </a>
                 </li>
                 <li class="social-icon">
                   <a href="https://www.twitter.com/rrrepeatblog" target="_blank"> 
-                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/twitter.png" alt="rrrepeat" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/twitter.png" alt="Rrrepeat Twitter" />
                   </a>
                 </li>
               </span>
