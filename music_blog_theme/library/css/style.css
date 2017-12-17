@@ -1621,6 +1621,11 @@ blockquote span {
     padding-left: 0;
   }
 }
+.page-template-page-list .info a {
+  margin-top: 20px;
+  display: block;
+  font-family: 'Poppins', sans-serif;
+}
 .page-template-page-list h2 {
   font-size: 30px;
   line-height: 32px;

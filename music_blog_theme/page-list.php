@@ -31,6 +31,9 @@
                         ?>
                         <b><?php echo $song_title ?></b> <?php echo trim($song_artist) ?></h2>
                       <p><?php the_sub_field('description'); ?></p>
+                      <?php $songlink = get_sub_field('songlink_link'); if (!empty($songlink)) : ?>
+                        <a href="<?php the_sub_field('songlink_link'); ?>">Find on your favorite streaming service</a>
+                      <?php endif; ?>
                     </div>
                   </li>
                 <?php endwhile; ?>
