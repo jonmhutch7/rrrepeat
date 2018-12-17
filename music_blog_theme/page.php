@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-
+<div id="inner-content"
 				<div id="inner-content" class="wrap cf">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -44,6 +44,6 @@
 							<?php endwhile; endif; ?>
 
 				</div>
-
+</div>
 
 <?php get_footer(); ?>

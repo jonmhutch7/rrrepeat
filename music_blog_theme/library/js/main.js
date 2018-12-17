@@ -7,6 +7,12 @@ function respondify(){
 
 $(document).ready(function() {
 
+  var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+
+  if (iOS) {
+    $('.music-links').remove();
+  }
+
   if ($('body').hasClass('home')) {
     $('.cat-item-all').addClass('current-menu-item');
   }
@@ -22,11 +28,13 @@ $(document).ready(function() {
   }
 
   if ($('body').hasClass('page-template-page-list')) {
-    $('.album-art').on('click', function () {
+    $('.main-list .album-art').on('click', function () {
         var iframe = $(this).attr('data-embed');
         var height = $(this).innerHeight();
         var width = $(this).innerWidth();
         $(this).html(iframe);
+        $(this).addClass('clicked');
+        $(this).removeClass('hover-active');
         $(this).children()[0].height = height;
         $(this).children()[0].width = width;
         return false;

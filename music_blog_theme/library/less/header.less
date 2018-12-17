@@ -25,9 +25,11 @@ header {
   }
 
   .float-desktop {
-    float: right;
+    position: absolute;
+    right: 0;
     @media @880 {
-      float: none;
+      position: relative;
+      right: auto;
     }
   }
 

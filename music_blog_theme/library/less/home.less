@@ -1,3 +1,72 @@
+.featured {
+	background-image: url('http://rrrepeat.com/wp-content/uploads/2018/03/IMG_7379-2.jpg');
+	height: 350px;
+	background-size: cover;
+	background-position: 0px 70%;
+	background-repeat: repeat-x;
+	// animation: bkganimate 120s ease infinite;
+	position: relative;
+	margin: 0 0 70px;
+	@media @640 {
+		// animation: none;
+		// background-image: url('http://rrrepeat.com/wp-content/uploads/2017/12/best-of-2017-mobile.png');
+		height: 275px;
+	}
+	&:hover {
+		h2:last-child {
+			opacity: 1;
+		}
+	}
+	h2 {
+		font-size: 44px;
+		line-height: 50px;
+		padding: 0 25px;
+		font-family: 'Poppins', sans-serif;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		font-weight: bold;
+		width: 100%;
+		color: #fff;
+		transition: all .2s ease-in-out;
+		mix-blend-mode: overlay;
+		&:last-child {
+			opacity: 0.3;
+			mix-blend-mode: initial;
+		}
+		@media @640 {
+			font-size: 38px;
+			line-height: 44px;
+			&:last-child {
+				opacity: 1;
+			}
+		}
+	}
+	.overlay {
+		position: absolute;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}
+
+@keyframes bkganimate {
+	0% {
+		background-position: 0 center;
+	}
+	50% { 
+		background-position: 100% center;
+	}
+	100% { 
+		background-position: 0 center;
+	}
+}
+
 .home,
 .category {
 	.home-article {

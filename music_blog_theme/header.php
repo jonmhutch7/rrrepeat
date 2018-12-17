@@ -17,12 +17,11 @@
         $title = get_the_title();
         $type = "article";
         $description = strip_tags($title). ". New Music from rrrepeat. So good it's on repeat. If you'd like to contribute, connect with us on Facebook or Twitter.";
-      } else if (in_category('weekly')) {
-        $album_art= get_field('album_art');
-        $image = $album_art['sizes']['medium_large'];
+      } else if (is_page('rrrepeat-best-albums-of-2017')) {
+        $image = 'http://rrrepeat.com/wp-content/uploads/2017/12/best-2017-social.png';
         $date = the_date('F S Y');
         $type = "article";
-        $description = "Weekly Roundup from rrrepeat, ".$date.". So good it's on repeat. If you'd like to contribute, connect with us on Facebook or Twitter.";
+        $description = "Some newcomers join the heavyweights like Kendrick Lamar and King Krule. This is the best of 2017.";
       } else if (in_category('reviews')) {
         $album_art= get_field('album_art');
         $image = $album_art['sizes']['medium_large'];
@@ -60,6 +59,23 @@
     <![endif]-->
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
     <?php wp_head(); ?>
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '154676365255196');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=154676365255196&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
   </head>
 
   <body <?php body_class(); ?>>
@@ -76,6 +92,7 @@
                   'orderby' => 'name',
                   'show_option_all' => 'All',
                   'title_li' => __( '' ),
+                  'exclude' => array( 4,62 )
               ) ); ?>
               <span class="float-desktop">
                 <li class="about">
@@ -104,6 +121,4 @@
        </nav>
       </div>
     </header>
-
-    <section id="content">
       
