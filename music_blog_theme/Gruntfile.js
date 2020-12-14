@@ -7,9 +7,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     project: {name: 'music_blog_theme'},
     paths: {
-      js: '<%= project.name %>/library/js/',
-      less: '<%= project.name %>/library/less/',
-      base: '<%= project.name %>/'
+      js: './library/js/',
+      less: './library/less/',
+      base: './'
     },
     less: {
       dev: {
@@ -26,13 +26,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    // copy: {
-    //   main: {
-    //     nonull: true,
-    //     src: 'glasspoint_v1.0/*',
-    //     dest: '../../original/glasspoint-website/',
-    //   },
-    // },
     uglify: {
       dev: {
         options: {

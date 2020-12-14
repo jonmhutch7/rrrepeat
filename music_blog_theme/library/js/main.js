@@ -52,14 +52,3 @@ $(document).ready(function() {
   respondify();
 
 });
-
-$(window).resize(function() {
-  respondify();
-});
-
-$(function() {
-  $.fn.almComplete = function(alm){
-    $('iframe[src*="spotify.com"]').height('80px');
-    respondify();
-  };
-});
