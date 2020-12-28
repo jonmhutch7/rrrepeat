@@ -44,66 +44,6 @@
 				<section class="article-body">
 					<?php the_content(); ?>
 				</section>
-
-				<?php
-					$contrib_one = get_field('contributor_one');
-					$contrib_two = get_field('contributor_two');
-				?>
-
-				<?php if (!empty($contrib_one) or !empty($contrib_two)) : ?>
-					<section class="contributors">
-						<span class="from-contribs">Contributors</span>
-
-						<?php 
-							$contribtext = get_field('contributor_one_text');
-							if (!empty($contribtext)) 
-						: ?>
-						<div class="contrib-one">
-							<p>
-									<b>"</b><?php echo $contribtext ?><b>"</b>
-							</p>
-							<div class="author-item contributor">
-								<?php
-									$userId = $contrib_one['ID'];
-									$user_info = get_userdata($userId);
-									$firstName = $user_info->first_name;
-									$lastName = $user_info->last_name;
-									$handle = get_field('twitter_handle', 'user_'.$userId);
-								?>
-								<div class="author-name">
-									<a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">
-											 <?php	echo $firstName; ?> <?php echo $lastName; ?>
-									</a>
-								</div>
-							</div>
-						</div>
-						<?php endif; ?>
-						<?php 
-							$contribtext = get_field('contributor_two_text');
-							if (!empty($contribtext)) 
-						: ?>
-						<div class="contrib-two">
-							<p>
-									<b>"</b><?php echo $contribtext ?><b>"</b>
-							</p>
-							<div class="author-item contributor">
-								<?php
-									$userId = $contrib_two['ID'];
-									$user_info = get_userdata($userId);
-									$firstName = $user_info->first_name;
-									$lastName = $user_info->last_name;
-									$handle = get_field('twitter_handle', 'user_'.$userId);
-								?>
-								<div class="author-name">
-									<a target="_blank" href="https://twitter.com/<?php echo $handle; ?>">
-											 <?php	echo $firstName; ?> <?php echo $lastName; ?>
-									</a>
-								</div>
-							</div>
-						</div>
-						<?php endif; ?>
-					</section>
-				<?php endif; ?>
 			</div>
 		</article>
 		

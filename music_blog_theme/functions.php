@@ -18,7 +18,27 @@
     remove_action( 'wp_head', 'wp_generator' );
     add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999 );
     add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 );
+    add_action( 'template_redirect', 'digitalnomad_remove_date_archives' );
   }
+
+  function digitalnomad_remove_date_archives() {
+
+    //if we are on date archive page
+    if ( is_date() ) {
+        // theme sets alternatine archive page with table like list of all posts
+        $archive_page = get_option( 'digitalnomad_archive_page' );
+        if ( $archive_page ) {
+            // redirs to alternatine archive page if configured (good for SEO)
+            wp_redirect( esc_url( get_page_link( $archive_page ) ) );
+            die();
+        } else {
+            // otherwise error 404 is displayed
+            global $wp_query;
+            $wp_query->set_404();
+        }
+    }
+  }
+  
 
   function rw_title( $title, $sep, $seplocation ) {
     global $page, $paged;
@@ -146,16 +166,6 @@ function custom_excerpt_length( $length ) {
   return 45;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-
-// Call the google CDN version of jQuery for the frontend
-// Make sure you use this with wp_enqueue_script('jquery'); in your header
-function wpfme_jquery_enqueue() {
-  wp_deregister_script('jquery');
-  wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false, null);
-  wp_enqueue_script('jquery');
-}
-if (!is_admin()) add_action("wp_enqueue_scripts", "wpfme_jquery_enqueue", 11);
-
 
 //custom excerpt length
 function wpfme_custom_excerpt_length( $length ) {
